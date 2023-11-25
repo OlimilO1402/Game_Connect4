@@ -21,7 +21,7 @@ Description="Game 4 gewinnt = connect 4"
 CompatibleMode="0"
 MajorVer=2023
 MinorVer=11
-RevisionVer=21
+RevisionVer=25
 AutoIncrementVer=0
 ServerSupportFiles=0
 VersionCompanyName="MBO-Ing.com"

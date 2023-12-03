@@ -202,6 +202,8 @@ Public Function ShowDialog(aOwner As Form, aGame_out As Connect4, aPl1_out As Pl
     
     UpdateView
     
+    Me.Move aOwner.Left + (aOwner.Width - Me.Width) / 2, aOwner.Top + (aOwner.Height - Me.Height) / 2
+    
     Me.Show vbModal, aOwner
     
     ShowDialog = m_Result

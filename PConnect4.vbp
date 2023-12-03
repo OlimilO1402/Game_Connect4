@@ -20,8 +20,8 @@ HelpContextID="0"
 Description="Game 4 gewinnt = connect 4"
 CompatibleMode="0"
 MajorVer=2023
-MinorVer=11
-RevisionVer=25
+MinorVer=12
+RevisionVer=3
 AutoIncrementVer=0
 ServerSupportFiles=0
 VersionCompanyName="MBO-Ing.com"

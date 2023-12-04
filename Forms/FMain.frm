@@ -115,6 +115,9 @@ Private m_NextPlayer As Player
 Private m_Player1    As Player
 Private m_Player2    As Player
 Private m_Undo       As UndoRedo
+Private m_LastButton As Integer
+Private m_LastX      As Single
+Private m_LastY      As Single
 
 Private Sub BtnInfo_Click()
     MsgBox App.CompanyName & " " & App.EXEName & " v" & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & App.FileDescription
@@ -158,8 +161,35 @@ Private Sub PBBackBuffer_Resize()
     Picture1_Paint
 End Sub
 
+Private Sub Picture1_Click()
+    'Debug.Print "Picture1_Click"
+    PictureMouseClick m_LastButton, m_LastX, m_LastY
+End Sub
+
+Private Sub Picture1_DblClick()
+    'Debug.Print "Picture1_DblClick"
+    'PictureMouseClick m_LastButton, m_LastX, m_LastY
+    PictureMouseClick m_LastButton, m_LastX, m_LastY
+End Sub
+
 Private Sub Picture1_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    
+    'Debug.Print "Picture1_MouseDown"
+    m_LastButton = Button: m_LastX = X: m_LastY = Y
+    'PictureMouseClick Button, X, Y
+End Sub
+
+Private Sub Picture1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    'Debug.Print "Picture1_MouseMove"
+    'm_LastButton = Button:
+    m_LastX = X: m_LastY = Y
+End Sub
+
+Private Sub Picture1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    'Debug.Print "Picture1_MouseUp"
+    'm_LastButton = Button: m_LastX = X: m_LastY = Y
+End Sub
+
+Private Sub PictureMouseClick(ByVal Button As Integer, ByVal X As Single, ByVal Y As Single)
     If Button <> MouseButtonConstants.vbLeftButton Then Exit Sub
     If m_Connect4.IsGameOver Then
         MsgBox "Game over! Please click 'New Game'!"
@@ -183,7 +213,6 @@ Private Sub Picture1_MouseDown(Button As Integer, Shift As Integer, X As Single,
         MsgBox "Game is drawn! Please click 'New Game'!"
     End If
     SaveUndo
-    
 End Sub
 
 Private Sub Picture1_Paint()

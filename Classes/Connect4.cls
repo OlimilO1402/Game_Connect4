@@ -19,7 +19,7 @@ Public Enum Connect4Chip
     Player2 = 2
     Highlighted = &H10
 End Enum
-
+'Bottom is row 1, top is row m_Height
 Private m_Field()    As Connect4Chip
 Private m_IsGameOver As Boolean
 Private m_Width      As Byte
@@ -81,15 +81,12 @@ Public Property Get NextPlayer() As Connect4Chip
 End Property
 
 Public Function NextPlayerDropChip(ByVal ColumnIndex As Byte) As Boolean
-    Select Case m_NextPlayer
-    Case Player1: NextPlayerDropChip = PlayerDropChip(ColumnIndex, Player1)
-    Case Player2: NextPlayerDropChip = PlayerDropChip(ColumnIndex, Player2)
-    End Select
-    TogglePlayer
+    NextPlayerDropChip = PlayerDropChip(ColumnIndex, m_NextPlayer)
+    If NextPlayerDropChip Then TogglePlayer
 End Function
 
 Private Sub TogglePlayer()
-    m_NextPlayer = IIf(m_NextPlayer = Player2, Player1, Player2)
+    m_NextPlayer = IIf(m_NextPlayer = Player1, Player2, Player1)
     If m_CountDown > 0 Then
         m_CountDown = m_CountDown - 1
         m_IsGameOver = (m_CountDown = 0)
@@ -100,11 +97,11 @@ Private Function PlayerDropChip(ByVal ColumnIndex As Byte, ByVal aChip As Connec
     If m_IsGameOver Then Exit Function
     'return true if successful
     If Not CheckColumnIndex(ColumnIndex) Then
-        MsgBox "Out of range, select column between 0 and " & m_Width
+        MsgBox "Out of range, select column between 1 and " & m_Width
         Exit Function
     End If
     If IsColumnFull(ColumnIndex) Then
-        MsgBox "Please select another column, the column with nr " & ColumnIndex & " is full!"
+        MsgBox "Please select another column, the column " & ColumnIndex & " is full!"
         Exit Function
     End If
     DropChip ColumnIndex, aChip

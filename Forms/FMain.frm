@@ -118,6 +118,9 @@ Private m_Undo       As UndoRedo
 Private m_LastButton As Integer
 Private m_LastX      As Single
 Private m_LastY      As Single
+'https://de.wikipedia.org/wiki/Vier_gewinnt
+'https://de.wikipedia.org/wiki/Gel%C3%B6ste_Spiele
+'https://de.wikihow.com/Bei-Vier-Gewinnt-gewinnen
 
 Private Sub BtnInfo_Click()
     MsgBox App.CompanyName & " " & App.EXEName & " v" & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & App.FileDescription

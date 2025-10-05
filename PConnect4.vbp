@@ -1,12 +1,12 @@
 Type=Exe
-Form=Forms\FMain.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\SysWow64\stdole2.tlb#OLE Automation
-Class=Connect4; Classes\Connect4.cls
-Module=MNew; Modules\MNew.bas
+Form=Forms\FMain.frm
 Form=Forms\FNewGame.frm
+Module=MNew; Modules\MNew.bas
+Module=MApp; Modules\MApp.bas
+Class=Connect4; Classes\Connect4.cls
 Class=Player; Classes\Player.cls
 Class=ColorDialog; ..\Win_Dialogs\Classes\ColorDialog.cls
-Module=MApp; Modules\MApp.bas
 Class=UndoRedo; Classes\UndoRedo.cls
 ResFile32="Resources\MyRes.res"
 IconForm="FMain"
